@@ -1,31 +1,104 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Modelo 3D</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: #000;
-    }
-    #viewer {
-      width: 100%;
-      height: 100%;
-    }
-  </style>
-</head>
+    <meta charset="UTF-8">
+    <title>Casa-Museo Maravillas</title>
+    styles.css
+    <script defer src="</head>
+
 <body>
 
-  <div id="viewer"></div>
+    <!-- ESPACIO 1: CABECERA -->
+    <header id="header">
+        <h1>Casa-Museo Maravillas</h1>
 
-  <!-- Three.js + GLTFLoader -->
-  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
-  <script src="https://unpkg.com/three@0.160.0/examples/js/loaders/GLTFLoader.js"></script>
+        <div id="hamburguesa">
+            <button id="menuBtn">☰</button>
+            <ul id="menuDesplegable" class="oculto">
+                <li>Visión Humedad Relativa HR%</li>
+                <li>Visión Temperatura Cº</li>
+                <li>Gráficas</li>
+                <li>Mapa Alerta de piezas</li>
+                <li>Selección por tipología</li>
+            </ul>
+        </div>
+    </header>
 
-  <script src="js/script.js"></script>
+    <!-- ESPACIO 2: MODELO 3D Y CONTROLES -->
+    <section id="zona3d">
+
+        <div id="datosAmbiente">
+            <p class="dato">18,7 Cº</p>
+            <p class="dato">45 % HR</p>
+            <p class="dato">86 lux</p>
+        </div>
+
+        <div id="modelo3d">
+            <!-- Aquí integras tu modelo 3D -->
+            <p>[MODELO 3D AQUÍ]</p>
+        </div>
+
+        <div id="controles3d">
+            <button>+ ampliar</button>
+            <button>- alejar</button>
+            <button>☩ mover</button>
+            <button>resetear visión</button>
+        </div>
+
+    </section>
+
+    <!-- ESPACIO 3: BUSCADOR DE PIEZAS -->
+    <section id="busqueda">
+
+        <div id="exportar">
+            <button id="btnExportar">Exportar datos</button>
+        </div>
+
+        <div id="panelBusqueda">
+
+            <div id="salaInfo">
+                <h2>Sala: Salón de estudio</h2>
+
+                <div id="inputBusqueda">
+                    <input type="text" id="codigoInput" placeholder="Introduce el código">
+                    <button id="btnBuscar">Buscar</button>
+                </div>
+
+                <div id="botonesEstado">
+                    <button class="estado exposicion">Exposición</button>
+                    <button class="estado sustitucion">Sustitución</button>
+                    <button class="estado retirada">Retirada</button>
+                </div>
+            </div>
+
+            <div id="imagenPieza">
+                <img id="piezaImg" src="" alt="Imagen de la pieza">
+            </div>
+
+            <div id="infoPieza">
+
+                <div class="columna">
+                    <p><strong>Nombre:</strong> <span id="nombre"></span></p>
+                    <p><strong>Autor:</strong> <span id="autor"></span></p>
+                    <p><strong>Datación:</strong> <span id="datacion"></span></p>
+                </div>
+
+                <div class="columna">
+                    <p><strong>Tipología:</strong> <span id="tipologia"></span></p>
+                    <p><strong>Materiales:</strong> <span id="materiales"></span></p>
+                    <p><strong>Dimensiones:</strong> <span id="dimensiones"></span></p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ESPACIO 4: PIE DE PÁGINA -->
+    <footer>
+        © Ana Braojos Martorell.
+    </footer>
+
 </body>
 </html>
