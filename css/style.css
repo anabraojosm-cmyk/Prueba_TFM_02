@@ -86,7 +86,7 @@ body {
 .ret { background: #e5b4b4; }
 
 /* DATOS */
-.object-data {  display:flex;  gap:20px;  flex-wrap: wrap;  color:#061D39;  font-size:14px;}
+.object-data {  display:flex;  gap:25px;  flex-wrap: wrap;  color:#061D39;  font-size:14px;}
 
 /* FOOTER */
 .footer {  height:22px;  background:#061D39;  display:flex;  justify-content:center;  align-items:center;  font-size:12px;}
