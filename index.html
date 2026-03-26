@@ -1,132 +1,166 @@
+# Proyecto web — Casa-Museo Maravillas
+
+## `/index.html`
+
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casa-Museo Maravillas</title>
-
-    <!-- ✅ CSS cargado correctamente -->
-    <ss/style.css
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa-Museo Maravillas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-    <!-- ================================
-         ESPACIO 1 — CABECERA
-    ================================= -->
-    <div class="top-bar">
-        Casa-Museo Maravillas
+<header class="top-bar">
+  <h1>Casa-Museo Maravillas</h1>
+  <button id="menuBtn" class="menu-btn">☰</button>
+  <div id="menuPanel" class="menu-panel">
+    <a href="#">Visión Humedad Relativa HR%</a>
+    <a href="#">Visión Temperatura Cº</a>
+    <a href="#">Gráficas</a>
+    <a href="#">Mapa Alerta de piezas</a>
+    <a href="#">Selección por tipología</a>
+  </div>
+</header>
 
-        <div class="menu-button" id="menuBtn">
-            <div class="menu-line"></div>
-            <div class="menu-line"></div>
-            <div class="menu-line"></div>
-        </div>
+<section class="viewer-section">
+  <div class="ambient-data">
+    <span>18,7 Cº</span>
+    <span>45 % HR</span>
+    <span>86 lux</span>
+  </div>
 
-        <div class="menu-panel" id="menuPanel">
-            <div>Visión Humedad Relativa HR%</div>
-            <div>Visión Temperatura Cº</div>
-            <div>Gráficas</div>
-            <div>Mapa Alerta de piezas</div>
-            <div>Selección por tipología</div>
-        </div>
+  <canvas id="threeCanvas"></canvas>
+
+  <div class="controls">
+    <button>+</button>
+    <button>-</button>
+    <button>☩</button>
+    <button id="resetView">Reset</button>
+  </div>
+</section>
+
+<section class="search-section">
+  <button class="export-btn" id="exportBtn">Exportar datos</button>
+
+  <div class="search-panel">
+    <h2>Sala: Salón de estudio</h2>
+
+    <div class="search-box">
+      <input type="text" id="pieceCode" placeholder="Introduce el código">
+      <button id="searchBtn">Buscar</button>
     </div>
 
-    <!-- ================================
-         ESPACIO 2 — MODELO 3D
-    ================================= -->
-    <div class="main">
-
-        <!-- Datos flotantes -->
-        <div style="
-            position:absolute; 
-            left:15px; 
-            top:15px; 
-            opacity:0.7;
-            display:flex;
-            flex-direction:column;
-            gap:4px;">
-            <span>18,7 Cº</span>
-            <span>45% HR</span>
-            <span>86 lux</span>
-        </div>
-
-        <!-- Canvas del modelo 3D -->
-        <canvas id="threeCanvas"></canvas>
-
-        <!-- Controles -->
-        <div style="
-            position:absolute; 
-            right:20px; 
-            top:20px; 
-            display:flex; 
-            flex-direction:column; 
-            gap:10px;">
-            <button class="button">+ ampliar</button>
-            <button class="button">- alejar</button>
-            <button class="button">☩ mover</button>
-            <button class="button">resetear visión</button>
-        </div>
-
+    <div class="status-buttons">
+      <button class="expo">Exposición</button>
+      <button class="sust">Sustitución</button>
+      <button class="ret">Retirada</button>
     </div>
+  </div>
 
-    <!-- ================================
-         ESPACIO 3 — BUSCADOR
-    ================================= -->
-    <div class="bottom-bar">
+  <div class="piece-image" id="pieceImage">Imagen pieza</div>
 
-        <h2>Sala: Salón de estudio</h2>
-
-        <div class="bottom-content">
-
-            <!-- Buscador -->
-            <div>
-                <input type="text" id="codigoInput" class="code-input" placeholder="Introduce el código">
-                <button id="btnBuscar" class="button">Buscar</button>
-
-                <div style="margin-top:10px; display:flex; gap:8px;">
-                    <button class="button">Exposición</button>
-                    <button class="button">Sustitución</button>
-                    <button class="button">Retirada</button>
-                </div>
-            </div>
-
-            <!-- Imagen -->
-            <div class="object-viewer">
-                <canvas id="objectCanvas"></canvas>
-                <span class="viewer-placeholder">Imagen de la pieza</span>
-            </div>
-
-            <!-- Datos -->
-            <div class="object-data">
-                <div>
-                    <div><strong>Nombre:</strong> <span id="nombre"></span></div>
-                    <div><strong>Autor:</strong> <span id="autor"></span></div>
-                    <div><strong>Datación:</strong> <span id="datacion"></span></div>
-                </div>
-
-                <div>
-                    <div><strong>Tipología:</strong> <span id="tipologia"></span></div>
-                    <div><strong>Materiales:</strong> <span id="materiales"></span></div>
-                    <div><strong>Dimensiones:</strong> <span id="dimensiones"></span></div>
-                </div>
-
-                <button id="btnExportar" class="button" style="margin-left:20px;">Exportar datos</button>
-            </div>
-
-        </div>
-
+  <div class="piece-info">
+    <div>
+      <p><strong>Nombre:</strong> <span id="nombre"></span></p>
+      <p><strong>Autor:</strong> <span id="autor"></span></p>
+      <p><strong>Datación:</strong> <span id="datacion"></span></p>
     </div>
-
-    <!-- ================================
-         ESPACIO 4 — PIE DE PÁGINA
-    ================================= -->
-    <div class="footer">
-        © Ana Braojos Martorell.
+    <div>
+      <p><strong>Tipología:</strong> <span id="tipologia"></span></p>
+      <p><strong>Materiales:</strong> <span id="materiales"></span></p>
+      <p><strong>Dimensiones:</strong> <span id="dimensiones"></span></p>
     </div>
+  </div>
+</section>
 
-    <!-- ✅ Cargar JS correctamente -->
-    js/script.js</script>
+<footer class="footer">© Ana Braojos Martorell</footer>
 
+<script src="js/script.js"></script>
 </body>
 </html>
+```
+
+## `/css/style.css`
+
+```css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background: #EBEBEB;
+  color: #061D39;
+}
+
+.top-bar {
+  background: #EBEBEB;
+  color: #061D39;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 20px;
+}
+
+.top-bar h1 {
+  font-size: 2rem;
+}
+
+.menu-btn {
+  position: absolute;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.menu-panel {
+  display: none;
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  background: white;
+  border: 1px solid #061D39;
+  padding: 10px;
+}
+
+.menu-panel.active {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-panel a {
+  color: #061D39;
+  text-decoration: none;
+  padding: 8px;
+}
+
+.viewer-section {
+  background: #061D39;
+  color: white;
+  height: 420px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#threeCanvas {
+  width: 70%;
+  height: 320px;
+  background: #16345c;
+}
+
+.ambient-data {
+  po
+```
