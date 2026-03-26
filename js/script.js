@@ -1,49 +1,41 @@
-// --- MENÚ HAMBURGUESA ---
-const menuBtn = document.getElementById("menuBtn");
-const menuDesplegable = document.getElementById("menuDesplegable");
+const menuBtn = document.getElementById('menuBtn');
+const menuPanel = document.getElementById('menuPanel');
 
-menuBtn.addEventListener("click", () => {
-    menuDesplegable.classList.toggle("oculto");
+menuBtn.addEventListener('click', () => {
+  menuPanel.classList.toggle('active');
 });
 
-
-// --- BASE DE DATOS SIMPLIFICADA ---
 const piezas = {
-    5: {
-        nombre: "Pieza de ejemplo", autor: "Autor desconocido", datacion: "Siglo XX",
-        tipologia: "3",
-        materiales: "3",
-        dimensiones: "3",
-        imagen: "https://via.placeholder.com/200"
-    }
+  A001: {
+    nombre: 'Mesa escritorio',
+    autor: 'Anónimo',
+    datacion: 'Siglo XIX',
+    tipologia: 'Mobiliario',
+    materiales: 'Madera',
+    dimensiones: '120x80 cm'
+  }
 };
 
+document.getElementById('searchBtn').addEventListener('click', () => {
+  const code = document.getElementById('pieceCode').value;
+  const pieza = piezas[code];
 
-// --- BUSCADOR ---
-const btnBuscar = document.getElementById("btnBuscar");
-const codigoInput = document.getElementById("codigoInput");
-
-btnBuscar.addEventListener("click", () => {
-    const codigo = codigoInput.value.trim();
-    const pieza = piezas[codigo];
-
-    if (pieza) {
-        document.getElementById("nombre").textContent = pieza.nombre;
-        document.getElementById("autor").textContent = pieza.autor;
-        document.getElementById("datacion").textContent = pieza.datacion;
-
-        document.getElementById("tipologia").textContent = pieza.tipologia;
-        document.getElementById("materiales").textContent = pieza.materiales;
-        document.getElementById("dimensiones").textContent = pieza.dimensiones;
-
-        document.getElementById("piezaImg").src = pieza.imagen;
-    } else {
-        alert("Código no encontrado.");
-    }
+  if (pieza) {
+    document.getElementById('nombre').textContent = pieza.nombre;
+    document.getElementById('autor').textContent = pieza.autor;
+    document.getElementById('datacion').textContent = pieza.datacion;
+    document.getElementById('tipologia').textContent = pieza.tipologia;
+    document.getElementById('materiales').textContent = pieza.materiales;
+    document.getElementById('dimensiones').textContent = pieza.dimensiones;
+  } else {
+    alert('Pieza no encontrada');
+       }
 });
 
+document.getElementById('exportBtn').addEventListener('click', () => {
+  alert('Exportación preparada');
+});
 
-// --- EXPORTAR DATOS (solo ejemplo de función) ---
-document.getElementById("btnExportar").addEventListener("click", () => {
-    alert("Función de exportar activada (a completar según tu necesidad)");
+document.getElementById('resetView').addEventListener('click', () => {
+  alert('Vista reseteada');
 });
