@@ -1,104 +1,120 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Casa-Museo Maravillas</title>
-    styles.css
-    <script defer src="</head>
+
+    <!-- ✅ Ruta correcta al CSS -->
+    <linktyle.css
+</head>
 
 <body>
 
-    <!-- ESPACIO 1: CABECERA -->
-    <header id="header">
-        <h1>Casa-Museo Maravillas</h1>
+    <!-- ================================
+         ESPACIO 1 — CABECERA
+    ================================= -->
+    <div class="top-bar">
+        Casa-Museo Maravillas
 
-        <div id="hamburguesa">
-            <button id="menuBtn">☰</button>
-            <ul id="menuDesplegable" class="oculto">
-                <li>Visión Humedad Relativa HR%</li>
-                <li>Visión Temperatura Cº</li>
-                <li>Gráficas</li>
-                <li>Mapa Alerta de piezas</li>
-                <li>Selección por tipología</li>
-            </ul>
-        </div>
-    </header>
-
-    <!-- ESPACIO 2: MODELO 3D Y CONTROLES -->
-    <section id="zona3d">
-
-        <div id="datosAmbiente">
-            <p class="dato">18,7 Cº</p>
-            <p class="dato">45 % HR</p>
-            <p class="dato">86 lux</p>
+        <div class="menu-button" id="menuBtn">
+            <div class="menu-line"></div>
+            <div class="menu-line"></div>
+            <div class="menu-line"></div>
         </div>
 
-        <div id="modelo3d">
-            <!-- Aquí integras tu modelo 3D -->
-            <p>[MODELO 3D AQUÍ]</p>
+        <div class="menu-panel" id="menuPanel">
+            <div>Visión Humedad Relativa HR%</div>
+            <div>Visión Temperatura Cº</div>
+            <div>Gráficas</div>
+            <div>Mapa Alerta de piezas</div>
+            <div>Selección por tipología</div>
+        </div>
+    </div>
+
+    <!-- ================================
+         ESPACIO 2 — MODELO 3D
+    ================================= -->
+    <div class="main">
+
+        <!-- Datos flotantes -->
+        <div style="
+            position:absolute; 
+            left:15px; 
+            top:15px; 
+            opacity:0.7;
+            display:flex;
+            flex-direction:column;
+            gap:4px;">
+            <span>18,7 Cº</span>
+            <span>45% HR</span>
+            <span>86 lux</span>
         </div>
 
-        <div id="controles3d">
-            <button>+ ampliar</button>
-            <button>- alejar</button>
-            <button>☩ mover</button>
-            <button>resetear visión</button>
+        <!-- Canvas del modelo 3D -->
+        <canvas id="threeCanvas"></canvas>
+
+        <!-- Controles -->
+        <div style="
+            position:absolute; 
+            right:20px; 
+            top:20px; 
+            display:flex; 
+            flex-direction:column; 
+            gap:10px;">
+            <button class="button">+ ampliar</button>
+            <button class="button">- alejar</button>
+            <button class="button">☩ mover</button>
+            <button class="button">resetear visión</button>
         </div>
 
-    </section>
+    </div>
 
-    <!-- ESPACIO 3: BUSCADOR DE PIEZAS -->
-    <section id="busqueda">
+    <!-- ================================
+         ESPACIO 3 — BUSCADOR
+    ================================= -->
+    <div class="bottom-bar">
 
-        <div id="exportar">
-            <button id="btnExportar">Exportar datos</button>
-        </div>
+        <h2>Sala: Salón de estudio</h2>
 
-        <div id="panelBusqueda">
+        <div class="bottom-content">
 
-            <div id="salaInfo">
-                <h2>Sala: Salón de estudio</h2>
+            <!-- Buscador -->
+            <div>
+                <input type="text" id="codigoInput" class="code-input" placeholder="Introduce el código">
+                <button id="btnBuscar" class="button">Buscar</button>
 
-                <div id="inputBusqueda">
-                    <input type="text" id="codigoInput" placeholder="Introduce el código">
-                    <button id="btnBuscar">Buscar</button>
-                </div>
-
-                <div id="botonesEstado">
-                    <button class="estado exposicion">Exposición</button>
-                    <button class="estado sustitucion">Sustitución</button>
-                    <button class="estado retirada">Retirada</button>
+                <div style="margin-top:10px; display:flex; gap:8px;">
+                    <button class="button">Exposición</button>
+                    <button class="button">Sustitución</button>
+                    <button class="button">Retirada</button>
                 </div>
             </div>
 
-            <div id="imagenPieza">
-                <img id="piezaImg" src="" alt="Imagen de la pieza">
+            <!-- Imagen -->
+            <div class="object-viewer">
+                <canvas id="objectCanvas"></canvas>
+                <span class="viewer-placeholder">Imagen de la pieza</span>
             </div>
 
-            <div id="infoPieza">
-
-                <div class="columna">
-                    <p><strong>Nombre:</strong> <span id="nombre"></span></p>
-                    <p><strong>Autor:</strong> <span id="autor"></span></p>
-                    <p><strong>Datación:</strong> <span id="datacion"></span></p>
+            <!-- Datos -->
+            <div class="object-data">
+                <div>
+                    <div><strong>Nombre:</strong> <span id="nombre"></span></div>
+                    <div><strong>Autor:</strong> <span id="autor"></span></div>
+                    <div><strong>Datación:</strong> <span id="datacion"></span></div>
                 </div>
 
-                <div class="columna">
-                    <p><strong>Tipología:</strong> <span id="tipologia"></span></p>
-                    <p><strong>Materiales:</strong> <span id="materiales"></span></p>
-                    <p><strong>Dimensiones:</strong> <span id="dimensiones"></span></p>
+                <div>
+                    <div><strong>Tipología:</strong> <span id="tipologia"></span></div>
+                    <div><strong>Materiales:</strong> <span id="materiales"></span></div>
+                    <div><strong>Dimensiones:</strong> <span id="dimensiones"></span></div>
                 </div>
 
+                <button id="btnExportar" class="button" style="margin-left:20px;">Exportar datos</button>
             </div>
 
         </div>
 
-    </section>
+    </div>
 
-    <!-- ESPACIO 4: PIE DE PÁGINA -->
-    <footer>
-        © Ana Braojos Martorell.
-    </footer>
 
-</body>
-</html>
