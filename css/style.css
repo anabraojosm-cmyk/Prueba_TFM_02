@@ -1,194 +1,73 @@
-/* =========================================================
-   RESETEO GLOBAL
-========================================================= */
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
-/* =========================================================
-   CONFIGURACIÓN GENERAL
-========================================================= */
-body {
-  font-family: 'Roboto', sans-serif;
-  background: #061D39;  /* Fondo azul del espacio 2 */
-  color: #EBEBEB;       /* Texto blanco del espacio 2 */
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-/* =========================================================
-   ESPACIO 1 — CABECERA (fondo blanco, texto azul)
-========================================================= */
-.top-bar {
-  height: 60px;
-  background: #EBEBEB; /* Blanco */
-  color: #061D39;      /* Azul */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Playfair Display', serif;
-  font-size: 28px;
-  font-weight: 700;
-  position: relative;
-}
-
-.menu-button {
+.ambient-data {
   position: absolute;
-  right: 25px;
-  top: 18px;
-  cursor: pointer;
+  top: 20px;
+  left: 20px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
-}
-
-.menu-line {
-  width: 22px;
-  height: 2px;
-  background: #061D39;
-}
-
-/* MENU DESPLEGABLE */
-.menu-panel {
-  position: absolute;
-  top: 60px;
-  right: 20px;
-  background: #EBEBEB;
-  color: #061D39;
-  border-radius: 6px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  padding: 12px;
-  display: none;
-  flex-direction: column;
-  gap: 10px;
-  font-size: 14px;
-  min-width: 190px;
-  z-index: 1000;
-}
-
-.menu-panel.active {
-  display: flex;
-}
-
-.menu-panel div {
-  cursor: pointer;
-  padding: 5px 8px;
-  border-radius: 4px;
-  transition: background 0.2s;
-}
-
-.menu-panel div:hover {
-  background: #A2A2A2;
-  color: white;
-}
-
-/* =========================================================
-   ESPACIO 2 — SALA (fondo azul, texto blanco)
-========================================================= */
-.main {
-  flex: 1;
-  background: #061D39;
-  display: flex;
-  min-height: 0;
-}
-
-#threeCanvas {
-  flex: 1;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-/* =========================================================
-   ESPACIO 3 — BUSCADOR (fondo blanco, texto azul)
-========================================================= */
-.bottom-bar {
-  background: #EBEBEB;
-  padding: 18px 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.bottom-bar h2 {
-  color: #061D39;
-  font-size: 20px;
-}
-
-.bottom-content {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-.search-block {
-  display: flex;
-  gap: 10px;
-}
-
-.code-input {
-  font-family: 'Fira Code', monospace;
-  padding: 10px;
-  border: 1px solid #A2A2A2;
-  border-radius: 8px;
-  background: #EBEBEB;
-  color: #061D39;
-}
-
-.button {
-  padding: 10px 16px;
-  background: #8F95A5;
-  color: #EBEBEB;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.button:hover { 
-  background: #061D39; 
-}
-
-/* =========================================================
-   VISOR DE LA PIEZA
-========================================================= */
-.object-viewer {
-  width: 170px;
-  height: 120px;
-  border: 1px solid #A2A2A2;
-  border-radius: 6px;
-  background: #061D39;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
   opacity: 0.7;
 }
 
-/* =========================================================
-   DATOS DE LA PIEZA
-========================================================= */
-.object-data {
+.controls {
+  position: absolute;
+  right: 20px;
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  color: #061D39;
-  font-size: 14px;
+  flex-direction: column;
+  gap: 10px;
 }
 
-/* =========================================================
-   ESPACIO 4 — FOOTER (fondo azul, texto blanco)
-========================================================= */
-.footer {
-  height: 22px;
-  background: #061D39;
+.controls button {
+  padding: 10px;
+}
+
+.search-section {
+  background: #EBEBEB;
+  color: #061D39;
+  display: grid;
+  grid-template-columns: 120px 1fr 220px 2fr;
+  gap: 20px;
+  padding: 20px;
+  align-items: center;
+}
+
+.search-box {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.search-box input {
+  padding: 8px;
+}
+
+.status-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.expo { background: #b8d8ba; }
+.sust { background: #f0d9a7; }
+.ret { background: #e5b4b4; }
+
+.piece-image {
+  height: 140px;
+  border: 1px solid #061D39;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 12px;
+}
+
+.piece-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.footer {
+  background: #061D39;
+  color: white;
+  text-align: center;
+  padding: 8px;
 }
