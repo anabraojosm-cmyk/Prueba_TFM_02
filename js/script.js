@@ -10,9 +10,7 @@ menuBtn.addEventListener("click", () => {
 // --- BASE DE DATOS SIMPLIFICADA ---
 const piezas = {
     5: {
-        nombre: "Pieza de ejemplo",
-        autor: "Autor desconocido",
-        datacion: "Siglo XX",
+        nombre: "Pieza de ejemplo", autor: "Autor desconocido", datacion: "Siglo XX",
         tipologia: "3",
         materiales: "3",
         dimensiones: "3",
