@@ -6,7 +6,7 @@ menuBtn.addEventListener('click', () => {
 });
 
 const piezas = {
-  A001: {
+  A1: {
     nombre: 'Mesa escritorio',
     autor: 'Anónimo',
     datacion: 'Siglo XIX',
